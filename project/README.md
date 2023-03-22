@@ -30,11 +30,24 @@ Clone the appropriate git repo with the starter code. There will be 2 folders. Z
 
     ```shell
     aws ec2 create-restore-image-task --object-key ami-0ec6fdfb365e5fc00.bin --bucket udacity-srend --name "udacity-<your_name>"
+
+    aws ec2 create-restore-image-task --object-key ami-0ec6fdfb365e5fc00.bin --bucket udacity-srend --name "udacity-rajdeep"
+
+
+    "ImageId": "ami-0e9b90b06b505d67f"
+
     ```
     <!-- - Replace the owner field in `_data.tf` with your Amazon owner ID assigned on the AMI (you can get this in the console by going to EC2 - AMIs and selecting the Owned by me at the top filter) -->
     - Take note of that AMI ID the script just output. Copy the AMI to `us-east-2` and `us-west-1`:
         - `aws ec2 copy-image --source-image-id <your-ami-id-from-above> --source-region us-east-1 --region us-east-2 --name "udacity-<your_name>"`
+        aws ec2 copy-image --source-image-id ami-0e9b90b06b505d67f --source-region us-east-1 --region us-east-2 --name "udacity-rajdeep"
+
+        ImageId": "ami-0b5e6d5d89b9fdbcd"
         - `aws ec2 copy-image --source-image-id <your-ami-id-from-above> --source-region us-east-1 --region us-west-1 --name "udacity-<your_name>"`
+        aws ec2 copy-image --source-image-id ami-0e9b90b06b505d67f --source-region us-east-1 --region us-west-1 --name "udacity-rajdeep"
+
+        "ImageId": "ami-0db8f676633e532f1"
+
 
     - Make note of the ami output from the above 2 commands. You'll need to put this in the `ec2.tf` file for `zone1` for `us-east-2` and in `ec2.tf` file for `zone2` for `us-west-1` respectively
 
